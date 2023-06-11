@@ -1,0 +1,133 @@
+{
+  "id": "project",
+  "label": "Project",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "name": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Name",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,strong,em,hyperlink"
+        }
+      },
+      "type": {
+        "type": "Text",
+        "config": { "label": "Type", "placeholder": "" }
+      },
+      "service": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Service",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "year": {
+        "type": "Text",
+        "config": { "label": "Year", "placeholder": "" }
+      },
+      "mockups": {
+        "type": "Group",
+        "config": {
+          "label": "Mockups",
+          "fields": {
+            "mockup": {
+              "type": "Image",
+              "config": {
+                "label": "Mockup",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "keywords": {
+        "type": "Group",
+        "config": {
+          "label": "Keywords",
+          "fields": {
+            "keyword": {
+              "type": "Text",
+              "config": { "label": "Keyword", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "show_collaboration": {
+        "type": "Boolean",
+        "config": {
+          "label": "Show Collaboration",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "collaborator_logo": {
+        "type": "Image",
+        "config": {
+          "label": "Collaborator logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "collaborator_link": {
+        "type": "Link",
+        "config": {
+          "label": "Collaborator link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "collaborator_name": {
+        "type": "Text",
+        "config": { "label": "Collaborator name", "placeholder": "" }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": { "choices": {} }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "StructuredText"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": { "height": 1260, "width": 2400 },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      }
+    }
+  }
+}
