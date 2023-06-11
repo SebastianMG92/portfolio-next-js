@@ -1,5 +1,5 @@
-import "@/scss/global.scss";
-import { roboto, sourceCodePro, archivo } from "@/fonts";
+import "@/src/scss/global.scss";
+import { roboto, sourceCodePro, archivo } from "@/src/fonts";
 import { WEBSITE_NAME, WEBSITE_DESCRIPTION } from "@/constants";
 
 import { PrismicPreview } from "@prismicio/next";
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${roboto.variable} ${sourceCodePro.variable} ${archivo.variable} font-body`}
     >
-      <body>
+      <body suppressHydrationWarning={true}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
