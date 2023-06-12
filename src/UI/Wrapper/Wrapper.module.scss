@@ -1,0 +1,21 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+
+.Wrapper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $max-width;
+  padding-left: rem-calc(15);
+  padding-right: rem-calc(15);
+
+  @media only screen and (min-width: theme("screens.md")) {
+    padding-left: rem-calc(25);
+    padding-right: rem-calc(25);
+  }
+
+  @media only screen and (min-width: theme("screens.xl")) {
+    padding-left: rem-calc(40);
+    padding-right: rem-calc(40);
+  }
+}

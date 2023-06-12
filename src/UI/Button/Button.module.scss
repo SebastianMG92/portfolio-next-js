@@ -1,0 +1,8 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+@import "~/src/scss/utils/mixins";
+
+.Button {
+  @include fluid-type($min-width, $max-width, rem-calc(14), rem-calc(16));
+  line-height: 1;
+}

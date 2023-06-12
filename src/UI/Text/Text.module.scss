@@ -1,0 +1,17 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+@import "~/src/scss/utils/mixins";
+
+.Text {
+  @include fluid-type($min-width, $max-width, rem-calc(14), rem-calc(16));
+  line-height: 1.2;
+
+  &--lg {
+    @include fluid-type($min-width, $max-width, rem-calc(14), rem-calc(20));
+    line-height: 1.5;
+  }
+
+  &--xl {
+    @include fluid-type($min-width, $max-width, rem-calc(16), rem-calc(40));
+  }
+}

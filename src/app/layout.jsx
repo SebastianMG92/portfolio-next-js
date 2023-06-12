@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${sourceCodePro.variable} ${archivo.variable} font-body`}
+      className={`${roboto.variable} ${sourceCodePro.variable} ${archivo.variable} font-body text-root-black`}
     >
       <body suppressHydrationWarning={true}>
         {children}

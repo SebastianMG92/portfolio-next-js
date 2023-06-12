@@ -1,0 +1,12 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+
+.Section {
+  &--full-height {
+    min-height: rem-calc(568);
+
+    @media only screen and (min-width: theme("screens.md")) {
+      min-height: rem-calc(706);
+    }
+  }
+}
