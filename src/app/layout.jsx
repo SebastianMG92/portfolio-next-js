@@ -17,8 +17,9 @@ export default function RootLayout({ children }) {
       className={`${roboto.variable} ${sourceCodePro.variable} ${archivo.variable} font-body text-root-black`}
     >
       <body suppressHydrationWarning={true}>
-        {children}
-        <PrismicPreview repositoryName={repositoryName} />
+        <PrismicPreview repositoryName={repositoryName}>
+          {children}
+        </PrismicPreview>
       </body>
     </html>
   );

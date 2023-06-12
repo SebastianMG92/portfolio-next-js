@@ -1,0 +1,37 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+
+.Project {
+  &--details {
+    li {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: rem-calc(1);
+        background-color: $yellow;
+      }
+
+      @for $i from 1 through 4 {
+        &:nth-child(4n + #{$i})::after {
+          opacity: 1 - ($i / 5);
+        }
+      }
+
+      @media only screen and (min-width: theme("screens.sm")) {
+        &::after {
+          content: "";
+          right: initial;
+          bottom: 0;
+          width: rem-calc(1);
+          height: 100%;
+          background-color: $yellow;
+        }
+      }
+    }
+  }
+}

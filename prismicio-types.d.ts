@@ -111,7 +111,7 @@ interface HomePageDocumentData {
  * Slice for *Home page → Slice Zone*
  *
  */
-type HomePageDocumentDataSlicesSlice = never;
+type HomePageDocumentDataSlicesSlice = ProjectsListSlice;
 /**
  * Home page document from Prismic
  *
@@ -226,14 +226,14 @@ interface ProjectDocumentData {
   /**
    * Name field in *Project*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: project.name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
-  name: prismic.RichTextField;
+  name: prismic.KeyTextField;
   /**
    * Description field in *Project*
    *
@@ -246,6 +246,17 @@ interface ProjectDocumentData {
    */
   description: prismic.RichTextField;
   /**
+   * Project link field in *Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.project_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  project_link: prismic.LinkField;
+  /**
    * Type field in *Project*
    *
    * - **Field Type**: Text
@@ -257,16 +268,16 @@ interface ProjectDocumentData {
    */
   type: prismic.KeyTextField;
   /**
-   * Service field in *Project*
+   * Services field in *Project*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: project.service
+   * - **API ID Path**: project.services[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/group
    *
    */
-  service: prismic.RichTextField;
+  services: prismic.GroupField<Simplify<ProjectDocumentDataServicesItem>>;
   /**
    * Year field in *Project*
    *
@@ -300,29 +311,6 @@ interface ProjectDocumentData {
    *
    */
   keywords: prismic.GroupField<Simplify<ProjectDocumentDataKeywordsItem>>;
-  /**
-   * Show Collaboration field in *Project*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: project.show_collaboration
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
-   */
-  show_collaboration: prismic.BooleanField;
-  /**
-   * Collaborator logo field in *Project*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.collaborator_logo
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  collaborator_logo: prismic.ImageField<never>;
   /**
    * Collaborator link field in *Project*
    *
@@ -391,6 +379,22 @@ interface ProjectDocumentData {
   meta_title: prismic.KeyTextField;
 }
 /**
+ * Item in Project → Services
+ *
+ */
+export interface ProjectDocumentDataServicesItem {
+  /**
+   * Service field in *Project → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.services[].service
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  service: prismic.KeyTextField;
+}
+/**
  * Item in Project → Mockups
  *
  */
@@ -446,6 +450,52 @@ export type AllDocumentTypes =
   | HomePageDocument
   | NavigationDocument
   | ProjectDocument;
+/**
+ * Item in ProjectsList → Items
+ *
+ */
+export interface ProjectsListSliceDefaultItem {
+  /**
+   * Project field in *ProjectsList → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_list.items[].project
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  project: prismic.ContentRelationshipField<"project">;
+}
+/**
+ * Default variation for ProjectsList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProjectsListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<ProjectsListSliceDefaultItem>
+>;
+/**
+ * Slice variation for *ProjectsList*
+ *
+ */
+type ProjectsListSliceVariation = ProjectsListSliceDefault;
+/**
+ * ProjectsList Shared Slice
+ *
+ * - **API ID**: `projects_list`
+ * - **Description**: `ProjectsList`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProjectsListSlice = prismic.SharedSlice<
+  "projects_list",
+  ProjectsListSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -463,11 +513,16 @@ declare module "@prismicio/client" {
       NavigationDocumentDataSlicesSlice,
       NavigationDocument,
       ProjectDocumentData,
+      ProjectDocumentDataServicesItem,
       ProjectDocumentDataMockupsItem,
       ProjectDocumentDataKeywordsItem,
       ProjectDocumentDataSlicesSlice,
       ProjectDocument,
       AllDocumentTypes,
+      ProjectsListSliceDefaultItem,
+      ProjectsListSliceDefault,
+      ProjectsListSliceVariation,
+      ProjectsListSlice,
     };
   }
 }

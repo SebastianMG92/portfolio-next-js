@@ -12,7 +12,8 @@ module.exports = {
         root: {
           black: "var(--black)",
           grey: "var(--grey)",
-          "grey-primary": "var(--grey-secondary)",
+          "grey-primary": "var(--grey-primary)",
+          "grey-secondary": "var(--grey-secondary)",
           "grey-tiertiary": "var(--grey-tiertiary)",
           yellow: "var(--yellow)",
         },

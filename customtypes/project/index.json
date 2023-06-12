@@ -8,13 +8,8 @@
     "Main": {
       "uid": { "config": { "label": "UID" }, "type": "UID" },
       "name": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Name",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
+        "type": "Text",
+        "config": { "label": "Name", "placeholder": "" }
       },
       "description": {
         "type": "StructuredText",
@@ -25,17 +20,29 @@
           "single": "paragraph,strong,em,hyperlink"
         }
       },
+      "project_link": {
+        "type": "Link",
+        "config": {
+          "label": "Project link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
       "type": {
         "type": "Text",
         "config": { "label": "Type", "placeholder": "" }
       },
-      "service": {
-        "type": "StructuredText",
+      "services": {
+        "type": "Group",
         "config": {
-          "label": "Service",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          "label": "Services",
+          "fields": {
+            "service": {
+              "type": "Text",
+              "config": { "label": "Service", "placeholder": "" }
+            }
+          }
         }
       },
       "year": {
@@ -70,28 +77,12 @@
           }
         }
       },
-      "show_collaboration": {
-        "type": "Boolean",
-        "config": {
-          "label": "Show Collaboration",
-          "placeholder_false": "false",
-          "placeholder_true": "true",
-          "default_value": false
-        }
-      },
-      "collaborator_logo": {
-        "type": "Image",
-        "config": {
-          "label": "Collaborator logo",
-          "constraint": {},
-          "thumbnails": []
-        }
-      },
       "collaborator_link": {
         "type": "Link",
         "config": {
           "label": "Collaborator link",
           "placeholder": "",
+          "allowTargetBlank": true,
           "select": null
         }
       },

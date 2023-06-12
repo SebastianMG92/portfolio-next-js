@@ -3,7 +3,7 @@
 @import "~/src/scss/utils/mixins";
 
 .Title {
-  @include fluid-type($min-width, $max-width, rem-calc(30), rem-calc(126));
+  @include fluid-type($min-width, $max-width, rem-calc(20), rem-calc(36));
   line-height: 1;
 
   &--xl {

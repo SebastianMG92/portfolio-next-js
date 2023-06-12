@@ -2,25 +2,12 @@
 @import "~/src/scss/utils/functions";
 
 .Hero {
-  padding-bottom: rem-calc(100);
-
   &--content {
     height: 100vh;
     min-height: rem-calc(568);
 
     @media only screen and (min-width: theme("screens.md")) {
       min-height: rem-calc(706);
-    }
-  }
-
-  &--scroll-indicator {
-    &::after {
-      content: "";
-      display: block;
-      background-color: $black;
-      width: rem-calc(1);
-      height: rem-calc(150);
-      margin: rem-calc(10) auto 0;
     }
   }
 }
