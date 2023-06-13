@@ -2,7 +2,7 @@ import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
 
 import { components } from "@/slices";
-import { Hero } from "@/components";
+import { Hero, Footer } from "@/components";
 
 export default async function Home() {
   const client = createClient();
@@ -23,6 +23,16 @@ export default async function Home() {
     ],
   });
 
+  const {
+    data: {
+      tagline: tagLineFooter,
+      title: titleFooter,
+      contact_link: contactLink,
+      contact_label: contactLabel,
+      links: linksFooter,
+    },
+  } = await client.getSingle("footer");
+
   return (
     <main>
       <Hero
@@ -33,6 +43,13 @@ export default async function Home() {
         linkLabel={link_label}
       />
       <SliceZone slices={slices} components={components} />
+      <Footer
+        tagline={tagLineFooter}
+        title={titleFooter}
+        contactLink={contactLink}
+        contactLabel={contactLabel}
+        links={linksFooter}
+      />
     </main>
   );
 }
