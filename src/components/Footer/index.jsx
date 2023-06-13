@@ -13,7 +13,7 @@ const Footer = ({
   links,
 }) => {
   return (
-    <footer className="bg-root-black py-20 text-white">
+    <footer className="overflow-hidden bg-root-black py-20 text-white">
       {!!links.length && <Marquee links={links} />}
     </footer>
   );
