@@ -70,7 +70,7 @@ const Project = ({ project, theme }) => {
                   className={`group relative flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
                 >
                   <Text
-                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                    className={`font-extrabold ${styles["Project--heading"]}`}
                   >
                     <p>Type</p>
                   </Text>
@@ -89,7 +89,7 @@ const Project = ({ project, theme }) => {
                   className={`group flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
                 >
                   <Text
-                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                    className={`font-extrabold ${styles["Project--heading"]}`}
                   >
                     <p>Services</p>
                   </Text>
@@ -117,7 +117,7 @@ const Project = ({ project, theme }) => {
                   className={`group flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
                 >
                   <Text
-                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                    className={`font-extrabold ${styles["Project--heading"]}`}
                   >
                     <p>Year</p>
                   </Text>
@@ -135,7 +135,7 @@ const Project = ({ project, theme }) => {
                   className={`group flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
                 >
                   <Text
-                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                    className={`font-extrabold ${styles["Project--heading"]}`}
                   >
                     <p>In collaboration with</p>
                   </Text>
