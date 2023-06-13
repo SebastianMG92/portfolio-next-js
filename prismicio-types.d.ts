@@ -290,16 +290,16 @@ interface ProjectDocumentData {
    */
   year: prismic.KeyTextField;
   /**
-   * Mockups field in *Project*
+   * Mockup field in *Project*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: project.mockups[]
+   * - **API ID Path**: project.mockup
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/group
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  mockups: prismic.GroupField<Simplify<ProjectDocumentDataMockupsItem>>;
+  mockup: prismic.ImageField<never>;
   /**
    * Keywords field in *Project*
    *
@@ -393,22 +393,6 @@ export interface ProjectDocumentDataServicesItem {
    *
    */
   service: prismic.KeyTextField;
-}
-/**
- * Item in Project → Mockups
- *
- */
-export interface ProjectDocumentDataMockupsItem {
-  /**
-   * Mockup field in *Project → Mockups*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.mockups[].mockup
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  mockup: prismic.ImageField<never>;
 }
 /**
  * Item in Project → Keywords
@@ -514,7 +498,6 @@ declare module "@prismicio/client" {
       NavigationDocument,
       ProjectDocumentData,
       ProjectDocumentDataServicesItem,
-      ProjectDocumentDataMockupsItem,
       ProjectDocumentDataKeywordsItem,
       ProjectDocumentDataSlicesSlice,
       ProjectDocument,

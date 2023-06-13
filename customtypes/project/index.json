@@ -49,21 +49,9 @@
         "type": "Text",
         "config": { "label": "Year", "placeholder": "" }
       },
-      "mockups": {
-        "type": "Group",
-        "config": {
-          "label": "Mockups",
-          "fields": {
-            "mockup": {
-              "type": "Image",
-              "config": {
-                "label": "Mockup",
-                "constraint": {},
-                "thumbnails": []
-              }
-            }
-          }
-        }
+      "mockup": {
+        "type": "Image",
+        "config": { "label": "Mockup", "constraint": {}, "thumbnails": [] }
       },
       "keywords": {
         "type": "Group",

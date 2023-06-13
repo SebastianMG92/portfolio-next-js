@@ -18,4 +18,12 @@
     padding-left: rem-calc(40);
     padding-right: rem-calc(40);
   }
+
+  &--full-width-right {
+    @media only screen and (min-width: theme("screens.lg")) {
+      padding-right: 0;
+      margin-right: 0;
+      max-width: calc(((100% - $max-width) / 2) + $max-width);
+    }
+  }
 }

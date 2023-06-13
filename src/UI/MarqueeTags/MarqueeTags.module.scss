@@ -1,0 +1,53 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+
+.MarqueeTags {
+  user-select: none;
+  overflow: hidden;
+  max-width: rem-calc(150);
+
+  @media only screen and (min-width: theme("screens.md")) {
+    max-width: rem-calc(200);
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: rem-calc(10);
+    border-top: rem-calc(2) solid $grey-secondary;
+    border-bottom: rem-calc(2) solid $grey-secondary;
+    z-index: 11;
+  }
+
+  &::before {
+    left: 0;
+    border-left: rem-calc(3) solid $grey-secondary;
+  }
+
+  &::after {
+    right: 0;
+    border-right: rem-calc(3) solid $grey-secondary;
+  }
+
+  &--tag {
+    position: relative;
+    padding-right: rem-calc(15);
+    padding-left: rem-calc(10);
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      width: rem-calc(5);
+      height: rem-calc(5);
+      border-radius: 100%;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background-color: $yellow;
+    }
+  }
+}

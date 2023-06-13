@@ -6,6 +6,10 @@
   @include fluid-type($min-width, $max-width, rem-calc(14), rem-calc(16));
   line-height: 1.2;
 
+  &--sm {
+    @include fluid-type($min-width, $max-width, rem-calc(12), rem-calc(14));
+  }
+
   &--lg {
     @include fluid-type($min-width, $max-width, rem-calc(14), rem-calc(20));
     line-height: 1.5;

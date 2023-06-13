@@ -2,11 +2,19 @@ import React, { Fragment } from "react";
 
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { Section, Wrapper, Title, Text, Button, ArrowRight, Link } from "@/UI";
+import {
+  Section,
+  Wrapper,
+  Title,
+  Text,
+  MarqueeTags,
+  Link,
+  ArrowRight,
+} from "@/UI";
 
 import styles from "./Project.module.scss";
 
-const Project = ({ project }) => {
+const Project = ({ project, theme }) => {
   const {
     name,
     description,
@@ -14,49 +22,80 @@ const Project = ({ project }) => {
     type,
     services,
     year,
-    mockups,
+    mockup,
     keywords,
     collaborator_link: collaboratorLink,
     collaborator_name: collaboratorName,
   } = project.data;
+
   return (
-    <Section className="lg:py-14">
-      <Wrapper>
-        <div className="grid gap-y-24 lg:grid-cols-12 lg:gap-x-5 lg:gap-y-0">
-          <div className="lg:col-span-7 lg:self-center xl:col-span-7">
+    <Section
+      className={`relative py-10 lg:sticky lg:top-0 lg:h-screen lg:py-0 ${
+        styles["Project"]
+      } ${styles[`Project__${theme}`]}`}
+    >
+      <Wrapper fullWidthRight className="h-full">
+        <div className="grid h-full gap-y-10 lg:grid-cols-12 lg:gap-y-0">
+          <div className="lg:col-span-5 lg:self-center">
+            {!!keywords.length && (
+              <MarqueeTags
+                keywords={keywords}
+                className={`relative mb-10 ${styles["Project--marquee"]}`}
+              />
+            )}
+
             {name && (
-              <Title className="mb-5 uppercase md:mb-12" headingLevel="h2">
+              <Title
+                className={`mb-5 uppercase md:mb-12 ${styles["Project--heading"]}`}
+                headingLevel="h2"
+              >
                 {name}
               </Title>
             )}
 
             {description && (
-              <Text className="max-w-xl text-root-grey-primary">
+              <Text
+                className={`text-root-grey-primary ${styles["Project--text"]}`}
+              >
                 <PrismicRichText field={description} />
               </Text>
             )}
 
             <ul
-              className={`mt-10 flex flex-col sm:flex-row md:mt-16 ${styles["Project--details"]}`}
+              className={`mt-10 flex flex-col md:mt-16 ${styles["Project--details"]}`}
               role="list"
             >
               {type && (
-                <li className="py-4 sm:py-0 sm:pl-3 sm:pr-5 xl:pl-5 xl:pr-10">
-                  <Text className="mb-1 font-extrabold">
+                <li
+                  className={`group relative flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
+                >
+                  <Text
+                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                  >
                     <p>Type</p>
                   </Text>
-                  <Text className="text-root-grey-primary">
+                  <Text
+                    className={`text-root-grey-primary ${styles["Project--text"]}`}
+                  >
                     <p>{type}</p>
                   </Text>
+
+                  <div className="pointer-events-none absolute inset-x-0 top-full h-full bg-white mix-blend-difference duration-100 ease-in-out group-hover:top-0 group-hover:duration-500"></div>
                 </li>
               )}
 
               {!!services.length && (
-                <li className="py-4 sm:py-0 sm:pl-3 sm:pr-5 xl:pl-5 xl:pr-10">
-                  <Text className="mb-1 font-extrabold">
+                <li
+                  className={`group flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
+                >
+                  <Text
+                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                  >
                     <p>Services</p>
                   </Text>
-                  <Text className="text-root-grey-primary">
+                  <Text
+                    className={`text-root-grey-primary ${styles["Project--text"]}`}
+                  >
                     <p>
                       {services.map(({ service }, index) => {
                         const isLast = index === services.length - 1;
@@ -69,70 +108,83 @@ const Project = ({ project }) => {
                       })}
                     </p>
                   </Text>
+                  <div className="pointer-events-none absolute inset-x-0 top-full h-full bg-white mix-blend-difference duration-100 ease-in-out group-hover:top-0 group-hover:duration-500"></div>
                 </li>
               )}
 
               {year && (
-                <li className="py-4 sm:py-0 sm:pl-3 sm:pr-5 xl:pl-5 xl:pr-10">
-                  <Text className="mb-1 font-extrabold">
+                <li
+                  className={`group flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
+                >
+                  <Text
+                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                  >
                     <p>Year</p>
                   </Text>
-                  <Text className="text-root-grey-primary">
+                  <Text
+                    className={`text-root-grey-primary ${styles["Project--text"]}`}
+                  >
                     <p>{year}</p>
                   </Text>
+                  <div className="pointer-events-none absolute inset-x-0 top-full h-full bg-white mix-blend-difference duration-100 ease-in-out group-hover:top-0 group-hover:duration-500"></div>
                 </li>
               )}
 
               {collaboratorName && (
-                <li className="py-4 sm:py-0 sm:pl-3 sm:pr-5 xl:pl-5 xl:pr-10">
-                  <Text className="mb-1 font-extrabold">
+                <li
+                  className={`group flex items-center justify-between overflow-hidden px-1 py-4 ${styles["Project--detail"]}`}
+                >
+                  <Text
+                    className={`mb-1 font-extrabold ${styles["Project--heading"]}`}
+                  >
                     <p>In collaboration with</p>
                   </Text>
 
-                  <Text className="text-root-grey-primary">
+                  <Text
+                    className={`text-root-grey-primary ${styles["Project--text"]}`}
+                  >
                     {collaboratorLink ? (
                       <Link field={collaboratorLink}>{collaboratorName}</Link>
                     ) : (
                       <p>{collaboratorName}</p>
                     )}
                   </Text>
+                  <div className="pointer-events-none absolute inset-x-0 top-full h-full bg-white mix-blend-difference duration-100 ease-in-out group-hover:top-0 group-hover:duration-500"></div>
                 </li>
               )}
             </ul>
           </div>
 
-          {mockups.length && (
-            <div className="relative lg:col-span-5 xl:col-span-5">
-              {!!keywords.length && (
-                <ul
-                  className="absolute z-10 flex rounded-2xl bg-root-black p-2 text-white"
-                  role="list"
-                >
-                  {keywords.map(({ keyword }, index) => (
-                    <li
-                      key={`${keyword}__${project.id}-${index}`}
-                      className="px-4"
-                    >
-                      <Text className="font-display">{keyword}</Text>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <figure className="relative aspect-[4/5]">
-                {mockups.map(({ mockup }) => (
-                  <PrismicNextImage
-                    key={mockup.url}
-                    field={mockup}
-                    fill
-                    className="object-cover"
-                  />
-                ))}
+          {mockup && (
+            <div className="relative lg:col-start-7 lg:col-end-13">
+              <figure
+                className={`relative aspect-[4/6] lg:aspect-auto lg:h-full`}
+              >
+                <PrismicNextImage
+                  field={mockup}
+                  fill
+                  className="block object-cover object-top"
+                />
               </figure>
 
               {projectLink && (
-                <div className="absolute bottom-0 right-0 z-10">
-                  <Button field={projectLink}>Go live</Button>
-                </div>
+                <PrismicNextLink
+                  field={projectLink}
+                  className={`absolute inset-0 z-20 block h-full w-full ${styles["Project--link"]}`}
+                >
+                  <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center justify-between overflow-hidden">
+                    <Text
+                      size="xl"
+                      className={`whitespace-nowrap uppercase ${styles["Project--link--label"]}`}
+                    >
+                      Visit now
+                    </Text>
+
+                    <ArrowRight
+                      className={`ml-1 block w-14 ${styles["Project--link--icon"]}`}
+                    />
+                  </div>
+                </PrismicNextLink>
               )}
             </div>
           )}

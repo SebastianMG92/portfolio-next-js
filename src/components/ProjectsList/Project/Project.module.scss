@@ -2,6 +2,12 @@
 @import "~/src/scss/utils/functions";
 
 .Project {
+  min-height: rem-calc(568);
+
+  @media only screen and (min-width: theme("screens.md")) {
+    min-height: rem-calc(706);
+  }
+
   &--details {
     li {
       position: relative;
@@ -15,22 +21,173 @@
         height: rem-calc(1);
         background-color: $yellow;
       }
+    }
+  }
 
-      @for $i from 1 through 4 {
-        &:nth-child(4n + #{$i})::after {
-          opacity: 1 - ($i / 5);
-        }
+  &--link {
+    color: white;
+
+    @media only screen and (min-width: theme("screens.lg")) {
+      color: $black;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: 0.3s ease-in-out opacity;
+      background: linear-gradient(
+        0deg,
+        rgba(35, 35, 35, 1) 0%,
+        rgba(35, 35, 35, 0.5) 20%,
+        rgba(35, 35, 35, 0) 40%
+      );
+
+      @media only screen and (min-width: theme("screens.lg")) {
+        opacity: 0;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      color: white;
+
+      &::after {
+        opacity: 1;
       }
 
-      @media only screen and (min-width: theme("screens.sm")) {
-        &::after {
-          content: "";
-          right: initial;
-          bottom: 0;
-          width: rem-calc(1);
-          height: 100%;
-          background-color: $yellow;
-        }
+      .Project--link--icon {
+        transform: rotate(0);
+      }
+
+      .Project--link--label {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &--label {
+      @media only screen and (min-width: theme("screens.lg")) {
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        transform: translateY(100%);
+      }
+    }
+
+    &--icon {
+      transform: rotate(-45deg);
+      transition: 0.3s ease-in-out;
+    }
+  }
+
+  &__white {
+    background-color: white;
+
+    .Project--text {
+      color: $grey-secondary;
+    }
+
+    .Project--marquee {
+      color: $grey-secondary;
+
+      &::after,
+      &::before {
+        background: white;
+      }
+
+      &::before {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 1) 30%,
+          rgba(255, 255, 255, 0.8) 90%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+
+      &::after {
+        background: linear-gradient(
+          -90deg,
+          rgba(255, 255, 255, 1) 30%,
+          rgba(255, 255, 255, 0.8) 90%,
+          rgba(255, 255, 255, 0) 95%
+        );
+      }
+    }
+  }
+
+  &__grey {
+    background-color: $grey-tiertiary;
+
+    .Project--text {
+      color: $black;
+    }
+
+    .Project--marquee {
+      color: $black;
+
+      &::after,
+      &::before {
+        background: $grey-tiertiary;
+      }
+
+      &::before {
+        background: linear-gradient(
+          90deg,
+          rgba(243, 243, 243, 1) 30%,
+          rgba(243, 243, 243, 0.8) 90%,
+          rgba(243, 243, 243, 0) 100%
+        );
+      }
+
+      &::after {
+        background: linear-gradient(
+          -90deg,
+          rgba(243, 243, 243, 1) 30%,
+          rgba(243, 243, 243, 0.8) 90%,
+          rgba(243, 243, 243, 0) 95%
+        );
+      }
+    }
+  }
+
+  &__black {
+    background-color: $black;
+
+    .Project--heading {
+      color: white;
+    }
+
+    .Project--text {
+      color: $grey-secondary;
+    }
+
+    .Project--marquee {
+      color: white;
+
+      &::after,
+      &::before {
+        background: $black;
+      }
+
+      &::before {
+        background: linear-gradient(
+          90deg,
+          rgba(35, 35, 35, 1) 30%,
+          rgba(35, 35, 35, 0.8) 90%,
+          rgba(35, 35, 35, 0) 100%
+        );
+      }
+
+      &::after {
+        background: linear-gradient(
+          -90deg,
+          rgba(35, 35, 35, 1) 30%,
+          rgba(35, 35, 35, 0.8) 90%,
+          rgba(35, 35, 35, 0) 95%
+        );
       }
     }
   }
