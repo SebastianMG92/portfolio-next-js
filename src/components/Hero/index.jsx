@@ -58,6 +58,7 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
         className={`absolute bottom-0 left-1/2 -translate-x-1/2 ${styles["Hero--scroll-indicator"]}`}
       >
         <Button
+          field={link}
           className="mt-7 font-bold uppercase lg:mt-10"
           type="inline"
           onClick={nextSectionHandler}
