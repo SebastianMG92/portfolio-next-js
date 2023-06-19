@@ -33,7 +33,7 @@ const Loader = () => {
   return (
     <div
       ref={container}
-      className={`fixed inset-x-0 top-0 z-50 h-screen bg-root-black ${
+      className={`fixed inset-0 z-50 h-screen bg-root-black ${
         styles["Loader"]
       } ${isLoaded && "pointer-events-none"}`}
     >
