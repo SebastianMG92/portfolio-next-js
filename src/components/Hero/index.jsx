@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { PrismicRichText } from "@prismicio/react";
 
-import { Section, Wrapper, Title, Text, Button } from "@/UI";
+import { Section, Wrapper, Title, Text, Button, ClipPathAnimation } from "@/UI";
+import { ClipPath, SplitLines } from "@/animations";
 
 import styles from "./Hero.module.scss";
 
@@ -30,41 +31,31 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
         <div className="text-center">
           {tagline && (
             <Text
-              className="mb-2 font-display uppercase text-root-grey-primary lg:mb-5"
+              className="mb-2 inline-block font-display uppercase text-root-grey-primary lg:mb-5"
               size="xl"
             >
-              <p>[{tagline}]</p>
+              <ClipPath>
+                <p>[{tagline}]</p>
+              </ClipPath>
             </Text>
           )}
           {title && (
             <Title headingLevel="h1" size="xl" className="uppercase">
-              {title}
+              <ClipPath delay={0.2}>{title}</ClipPath>
             </Title>
           )}
           {description && (
             <Text className="mx-auto mt-5 max-w-xl lg:mt-7" size="lg">
-              <PrismicRichText field={description} />
+              <SplitLines delay={0.4}>{description}</SplitLines>
             </Text>
           )}
           {link && linkLabel && (
-            <Button field={link} className="mt-7 lg:mt-10">
-              {linkLabel}
-            </Button>
+            <ClipPath className="mt-7 inline-block lg:mt-10" delay={0.6}>
+              <Button field={link}>{linkLabel}</Button>
+            </ClipPath>
           )}
         </div>
       </Wrapper>
-
-      <div
-        className={`absolute bottom-0 left-1/2 -translate-x-1/2 ${styles["Hero--scroll-indicator"]}`}
-      >
-        <Button
-          className="mt-7 font-bold uppercase lg:mt-10"
-          type="inline"
-          onClick={nextSectionHandler}
-        >
-          SCROLL
-        </Button>
-      </div>
     </Section>
   );
 };

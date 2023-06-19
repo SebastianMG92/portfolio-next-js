@@ -5,7 +5,8 @@
       "@/components": ["./src/components"],
       "@/UI": ["./src/UI"],
       "@/utils": ["./src/utils/*"],
-      "@/constants": ["./src/constants"]
+      "@/constants": ["./src/constants"],
+      "@/animations": ["./src/animations"]
     }
   }
 }

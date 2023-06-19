@@ -15,13 +15,8 @@
         "config": { "label": "Title", "placeholder": "" }
       },
       "description": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Description",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em,hyperlink"
-        }
+        "type": "Text",
+        "config": { "label": "description", "placeholder": "" }
       },
       "link": {
         "type": "Link",

@@ -178,16 +178,16 @@ interface HomePageDocumentData {
    */
   title: prismic.KeyTextField;
   /**
-   * Description field in *Home page*
+   * description field in *Home page*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: home_page.description
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
-  description: prismic.RichTextField;
+  description: prismic.KeyTextField;
   /**
    * Link field in *Home page*
    *
