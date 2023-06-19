@@ -1,0 +1,29 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+
+.Loader {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+
+  &__spinner {
+    position: absolute;
+    width: rem-calc(32);
+    height: rem-calc(32);
+    border: rem-calc(3) solid;
+    border-radius: 50%;
+    animation: loading-container 1s linear infinite;
+    left: rem-calc(50);
+    bottom: rem-calc(50);
+    box-sizing: content-box;
+    border-color: white;
+    border-top-color: transparent;
+  }
+}
+
+@keyframes loading-container {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -4,16 +4,22 @@ import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import SplitType from "split-type";
 
-const SplitLines = ({ delay = 0, children }) => {
+import styles from "./SplitLines.module.scss";
+
+const SplitLines = ({ paused = false, delay = 0, children }) => {
   const container = useRef(null);
 
   useEffect(() => {
-    if (!!container.current) {
-      let ctx = gsap.context(() => {
-        const myText = new SplitType(container.current, { types: "lines" });
+    let textSplited = null;
 
+    if (!!container.current) {
+      textSplited = new SplitType(container.current, { types: "lines" });
+    }
+
+    if (!!container.current && !paused) {
+      let ctx = gsap.context(() => {
         gsap.fromTo(
-          myText.lines,
+          textSplited.lines,
           {
             opacity: 0,
             y: 100,
@@ -32,10 +38,10 @@ const SplitLines = ({ delay = 0, children }) => {
         ctx.revert();
       };
     }
-  }, []);
+  }, [delay, paused]);
 
   return (
-    <div ref={container} className="overflow-hidden">
+    <div ref={container} className={`overflow-hidden ${styles["SplitLines"]}`}>
       {children}
     </div>
   );

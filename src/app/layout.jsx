@@ -3,7 +3,8 @@ import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio.js";
 import { roboto, sourceCodePro, archivo } from "@/src/fonts";
 import { WEBSITE_NAME, WEBSITE_DESCRIPTION } from "@/constants";
-import { GoogleAnalytics } from "@/components";
+import { GoogleAnalytics, Loader } from "@/components";
+import { LoaderProvider } from "@/src/context/LoaderContext";
 
 export const metadata = {
   title: WEBSITE_NAME,
@@ -18,9 +19,12 @@ export default function RootLayout({ children }) {
     >
       <body suppressHydrationWarning={true}>
         <GoogleAnalytics />
-        <PrismicPreview repositoryName={repositoryName}>
-          {children}
-        </PrismicPreview>
+        <LoaderProvider>
+          <PrismicPreview repositoryName={repositoryName}>
+            <Loader />
+            {children}
+          </PrismicPreview>
+        </LoaderProvider>
       </body>
     </html>
   );

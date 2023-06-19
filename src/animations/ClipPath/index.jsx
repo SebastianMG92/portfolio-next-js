@@ -5,11 +5,17 @@ import { gsap } from "gsap";
 
 import styles from "./ClipPath.module.scss";
 
-const ClipPath = ({ delay = 0, className = "", children, ...props }) => {
+const ClipPath = ({
+  paused = false,
+  delay = 0,
+  className = "",
+  children,
+  ...props
+}) => {
   const container = useRef(null);
 
   useEffect(() => {
-    if (!!container.current) {
+    if (!!container.current && !paused) {
       let ctx = gsap.context(() => {
         const tl = gsap.timeline({ defaults: { ease: "expo.inOut" } });
 
@@ -31,7 +37,7 @@ const ClipPath = ({ delay = 0, className = "", children, ...props }) => {
         ctx.revert();
       };
     }
-  }, []);
+  }, [delay, paused]);
 
   return (
     <div

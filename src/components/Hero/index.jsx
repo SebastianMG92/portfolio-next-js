@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { PrismicRichText } from "@prismicio/react";
+import React, { useRef, useContext } from "react";
 
-import { Section, Wrapper, Title, Text, Button, ClipPathAnimation } from "@/UI";
+import { Section, Wrapper, Title, Text, Button } from "@/UI";
 import { ClipPath, SplitLines } from "@/animations";
+import { LoaderContext } from "@/src/context/LoaderContext";
 
 import styles from "./Hero.module.scss";
 
 const Hero = ({ tagline, title, description, link, linkLabel }) => {
   const container = useRef(null);
+  const { isLoaded } = useContext(LoaderContext);
 
   const nextSectionHandler = () => {
     if (!container.current) return null;
@@ -34,23 +35,31 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
               className="mb-2 inline-block font-display uppercase text-root-grey-primary lg:mb-5"
               size="xl"
             >
-              <ClipPath>
+              <ClipPath paused={!isLoaded}>
                 <p>[{tagline}]</p>
               </ClipPath>
             </Text>
           )}
           {title && (
             <Title headingLevel="h1" size="xl" className="uppercase">
-              <ClipPath delay={0.2}>{title}</ClipPath>
+              <ClipPath delay={0.2} paused={!isLoaded}>
+                {title}
+              </ClipPath>
             </Title>
           )}
           {description && (
             <Text className="mx-auto mt-5 max-w-xl lg:mt-7" size="lg">
-              <SplitLines delay={0.4}>{description}</SplitLines>
+              <SplitLines delay={1} paused={!isLoaded}>
+                {description}
+              </SplitLines>
             </Text>
           )}
           {link && linkLabel && (
-            <ClipPath className="mt-7 inline-block lg:mt-10" delay={0.6}>
+            <ClipPath
+              className="mt-7 inline-block lg:mt-10"
+              delay={1}
+              paused={!isLoaded}
+            >
               <Button field={link}>{linkLabel}</Button>
             </ClipPath>
           )}
