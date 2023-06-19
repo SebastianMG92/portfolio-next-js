@@ -47,6 +47,7 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
               </ClipPath>
             </Title>
           )}
+
           {description && (
             <Text className="mx-auto mt-5 max-w-xl lg:mt-7" size="lg">
               <SplitLines delay={1} paused={!isLoaded}>
@@ -54,6 +55,7 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
               </SplitLines>
             </Text>
           )}
+
           {link && linkLabel && (
             <ClipPath
               className="mt-7 inline-block lg:mt-10"
