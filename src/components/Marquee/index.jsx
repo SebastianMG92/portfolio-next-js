@@ -33,7 +33,7 @@ const Marquee = ({ links, className = "", ...props }) => {
           <li key={`${item.label}__${index}`} className="uppercase">
             <PrismicNextLink
               field={item.link}
-              className="px-5 text-6xl lg:px-14 lg:text-9xl"
+              className="px-5 text-6xl text-root-black lg:px-10 lg:text-9xl"
             >
               {item.link_label}
             </PrismicNextLink>
