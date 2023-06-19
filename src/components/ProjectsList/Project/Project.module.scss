@@ -87,15 +87,15 @@
     background-color: white;
 
     .Project--text {
-      color: $grey-secondary;
+      color: $grey-primary;
     }
 
     .Project--marquee {
-      color: $grey-secondary;
+      color: $grey-primary;
 
       &::after,
       &::before {
-        background: white;
+        background: $grey-primary;
       }
 
       &::before {

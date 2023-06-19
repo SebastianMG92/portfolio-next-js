@@ -16,6 +16,6 @@
   }
 
   &--xl {
-    @include fluid-type($min-width, $max-width, rem-calc(16), rem-calc(40));
+    @include fluid-type($min-width, $max-width, rem-calc(16), rem-calc(30));
   }
 }

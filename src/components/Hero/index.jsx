@@ -32,7 +32,7 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
         <div className="text-center">
           {tagline && (
             <Text
-              className="mb-2 inline-block font-display uppercase text-root-grey-primary lg:mb-5"
+              className="mb-2 inline-block font-heading uppercase tracking-wider text-root-grey-primary lg:mb-5"
               size="xl"
             >
               <ClipPath paused={!isLoaded}>

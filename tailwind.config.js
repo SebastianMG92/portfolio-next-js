@@ -22,7 +22,6 @@ module.exports = {
       fontFamily: {
         body: "var(--base-font)",
         heading: "var(--heading-font)",
-        display: "var(--display-font)",
       },
     },
   },

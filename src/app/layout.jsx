@@ -1,7 +1,7 @@
 import "@/src/scss/global.scss";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio.js";
-import { roboto, sourceCodePro, archivo } from "@/src/fonts";
+import { roboto, archivo } from "@/src/fonts";
 import { WEBSITE_NAME, WEBSITE_DESCRIPTION } from "@/constants";
 import { GoogleAnalytics, Loader } from "@/components";
 import { LoaderProvider } from "@/src/context/LoaderContext";
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${sourceCodePro.variable} ${archivo.variable} font-body text-root-black`}
+      className={`${roboto.variable} ${archivo.variable} font-body text-root-grey-primary`}
     >
       <body suppressHydrationWarning={true}>
         <GoogleAnalytics />

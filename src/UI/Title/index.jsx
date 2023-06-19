@@ -24,7 +24,7 @@ const Title = ({
     : "p";
 
   const titleClasses = classNames(
-    "font-heading",
+    "font-heading tracking-wide text-root-black",
     styles["Title"],
     styles[`Title--${size}`],
     className

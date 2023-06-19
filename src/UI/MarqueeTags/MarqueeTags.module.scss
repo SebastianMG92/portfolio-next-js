@@ -17,19 +17,19 @@
     top: 0;
     bottom: 0;
     width: rem-calc(10);
-    border-top: rem-calc(2) solid $grey-secondary;
-    border-bottom: rem-calc(2) solid $grey-secondary;
+    border-top: rem-calc(2) solid $yellow;
+    border-bottom: rem-calc(2) solid $yellow;
     z-index: 11;
   }
 
   &::before {
     left: 0;
-    border-left: rem-calc(3) solid $grey-secondary;
+    border-left: rem-calc(3) solid $yellow;
   }
 
   &::after {
     right: 0;
-    border-right: rem-calc(3) solid $grey-secondary;
+    border-right: rem-calc(3) solid $yellow;
   }
 
   &--tag {

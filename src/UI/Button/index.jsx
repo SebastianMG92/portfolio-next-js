@@ -12,7 +12,7 @@ const Button = ({
   ...props
 }) => {
   const buttonClasses = classNames(
-    "inline-block ",
+    "inline-block text-root-black",
     styles["Button"],
     {
       ["bg-root-yellow font-extrabold py-2.5 px-4"]: type === "solid",
