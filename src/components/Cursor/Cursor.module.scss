@@ -1,0 +1,84 @@
+@import "~/src/scss/config/variables";
+@import "~/src/scss/utils/functions";
+
+.Cursor {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  z-index: 900;
+  pointer-events: none;
+
+  @media only screen and (max-width: theme("screens.md")) {
+    display: none;
+  }
+
+  &__dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $grey-primary;
+    width: rem-calc(10);
+    height: rem-calc(10);
+    border-radius: 100%;
+    transition: 0.15s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 100%;
+      width: rem-calc(30);
+      height: rem-calc(30);
+      border: rem-calc(1) solid $grey;
+      transition: 0.15s ease-in-out;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    font-size: rem-calc(12);
+  }
+
+  &--white {
+    .Cursor__dot {
+      background-color: white;
+
+      &::after {
+        border-color: white;
+      }
+    }
+  }
+
+  &--link {
+    .Cursor__dot {
+      background-color: $yellow;
+      width: rem-calc(30);
+      height: rem-calc(30);
+      opacity: 0.8;
+    }
+  }
+
+  &--scroll {
+    .Cursor__dot {
+      width: rem-calc(80);
+      height: rem-calc(80);
+      background-color: transparent;
+
+      &::after {
+        width: rem-calc(80);
+        height: rem-calc(80);
+      }
+    }
+
+    .Cursor__label {
+      opacity: 1;
+      transition: 0.3s 0.3s ease-in-out;
+    }
+  }
+}

@@ -5,11 +5,13 @@ import React, { useRef, useContext } from "react";
 import { Section, Wrapper, Title, Text, Button } from "@/UI";
 import { ClipPath, SplitLines } from "@/animations";
 import { LoaderContext } from "@/src/context/LoaderContext";
+import { CursorContext } from "@/src/context/CursorContext";
 
 import styles from "./Hero.module.scss";
 
 const Hero = ({ tagline, title, description, link, linkLabel }) => {
   const container = useRef(null);
+  const { showCursor, removeCursor } = useContext(CursorContext);
   const { isLoaded } = useContext(LoaderContext);
 
   const nextSectionHandler = () => {
@@ -22,6 +24,14 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
         behavior: "smooth",
       });
     }
+  };
+
+  const onMouseMoveHandler = () => {
+    showCursor("scroll");
+  };
+
+  const onMouseLeaveHandler = () => {
+    removeCursor("scroll");
   };
 
   return (
@@ -49,7 +59,7 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
           )}
 
           {description && (
-            <Text className="mx-auto mt-5 max-w-xl lg:mt-7" size="lg">
+            <Text className="mx-auto mt-5 max-w-2xl lg:mt-7" size="lg">
               <SplitLines delay={1} paused={!isLoaded}>
                 {description}
               </SplitLines>
@@ -58,7 +68,7 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
 
           {link && linkLabel && (
             <ClipPath
-              className="mt-7 inline-block lg:mt-10"
+              className="relative z-50 mt-7 inline-block lg:mt-10"
               delay={1}
               paused={!isLoaded}
             >
@@ -67,6 +77,15 @@ const Hero = ({ tagline, title, description, link, linkLabel }) => {
           )}
         </div>
       </Wrapper>
+
+      <button
+        type="button"
+        className="absolute inset-0 bg-transparent"
+        onClick={nextSectionHandler}
+        onMouseEnter={onMouseMoveHandler}
+        onMouseLeave={onMouseLeaveHandler}
+        aria-label="Scroll down"
+      ></button>
     </Section>
   );
 };

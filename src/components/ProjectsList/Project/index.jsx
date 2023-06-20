@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+"use client";
+import React, { Fragment, useContext } from "react";
 
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
 import {
   Section,
   Wrapper,
@@ -11,6 +12,7 @@ import {
   Link,
   ArrowRight,
 } from "@/UI";
+import { CursorContext } from "@/src/context/CursorContext";
 
 import styles from "./Project.module.scss";
 
@@ -27,9 +29,20 @@ const Project = ({ project, theme }) => {
     collaborator_link: collaboratorLink,
     collaborator_name: collaboratorName,
   } = project.data;
+  const { showCursor, removeCursor } = useContext(CursorContext);
+
+  const onMouseMoveHandler = () => {
+    if (theme === "black") showCursor("white");
+  };
+
+  const onMouseLeaveHandler = () => {
+    removeCursor("white");
+  };
 
   return (
     <Section
+      onMouseMove={onMouseMoveHandler}
+      onMouseLeave={onMouseLeaveHandler}
       className={`relative py-10 lg:sticky lg:top-0 lg:h-screen lg:py-0 ${
         styles["Project"]
       } ${styles[`Project__${theme}`]}`}
@@ -168,7 +181,7 @@ const Project = ({ project, theme }) => {
               </figure>
 
               {projectLink && (
-                <PrismicNextLink
+                <Link
                   field={projectLink}
                   className={`absolute inset-0 z-20 block h-full w-full ${styles["Project--link"]}`}
                 >
@@ -184,7 +197,7 @@ const Project = ({ project, theme }) => {
                       className={`ml-1 block w-14 ${styles["Project--link--icon"]}`}
                     />
                   </div>
-                </PrismicNextLink>
+                </Link>
               )}
             </div>
           )}

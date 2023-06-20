@@ -11,3 +11,6 @@
 @tailwind components;
 @tailwind utilities;
 /* Stop purging. */
+
+/* Base */
+@import "./config/base";
