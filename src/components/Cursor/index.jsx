@@ -29,7 +29,6 @@ const Cursor = () => {
 
   const { x, y } = mousePosition;
 
-  console.log(cursor);
   return (
     <div
       className={cursorClasses}
